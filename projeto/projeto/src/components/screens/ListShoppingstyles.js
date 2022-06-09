@@ -67,10 +67,12 @@ const styles = StyleSheet.create({
         marginLeft: 3
     },
     listInsideBox4: {
+        paddingTop: 5,
         position: 'absolute',
         right: 40
     },
     listInsideBox5: {
+        paddingTop: 5,
         position: 'absolute',
         right: 5
     }

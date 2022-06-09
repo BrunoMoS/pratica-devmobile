@@ -86,9 +86,9 @@ export default function ListShopping({navigation}) {
         return (
             <View style={styles.listInsideBox}>
                 <Text style={styles.listInsideBox1}>{item.quantity?item.quantity.slice(0,2):''}</Text>
-                <Text style={item.completed?styles.listInsideBox2A:styles.listInsideBox2}>{item.title?item.title.slice(0,17):''}</Text>
+                <Text style={item.completed?styles.listInsideBox2A:styles.listInsideBox2}>{item.title?item.title.slice(0,16):''}</Text>
                 <Text style={styles.listInsideBox1}>{item.price?item.price.slice(0,5):''}</Text>
-                <Text style={styles.listInsideBox2}>{item.place?item.place.slice(0,12):''}</Text>
+                <Text style={styles.listInsideBox2}>{item.place?item.place.slice(0,11):''}</Text>
                 <Text style={styles.listInsideBox3}>{item.cost > 0?item.cost.slice(0,6):''}</Text>
                 <Icon
                     style={styles.listInsideBox4}

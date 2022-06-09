@@ -103,9 +103,9 @@ export default function ItensList({navigation}) {
         return (
             <View style={styles.listInsideBox}>
                 <Text style={styles.insideBox1}>{item.quantity?item.quantity.slice(0,2):''}</Text>
-                <Text style={styles.insideBox2}>{item.title?item.title.slice(0,13):''}</Text>
+                <Text style={styles.insideBox2}>{item.title?item.title.slice(0,12):''}</Text>
                 <Text style={styles.insideBox1}>{item.price?item.price.slice(0,5):''}</Text>
-                <Text style={styles.insideBox2}>{item.place?item.place.slice(0,10):''}</Text>
+                <Text style={styles.insideBox2}>{item.place?item.place.slice(0,9):''}</Text>
                 <Text style={styles.insideBox1}>{item.cost > 0?item.cost.slice(0,6):''}</Text>
                 <Icon
                     style={styles.insideBox3}  
