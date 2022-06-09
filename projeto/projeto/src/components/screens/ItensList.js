@@ -87,15 +87,16 @@ export default function ItensList({navigation}) {
         const data = response? JSON.parse(response): []
         if(search === '') {
             Alert.alert('Atenção!', 'Informe o item ou o local!')
-        }
-        for(let i=0; i<data.length; i++) {
-            let{title: titleSearch, place: placeSearch} = data[i]
-            if(titleSearch === search || placeSearch === search) {
-                info.push(data[i])
+        } else {
+            for(let i=0; i<data.length; i++) {
+                let{title: titleSearch, place: placeSearch} = data[i]
+                if(titleSearch === search || placeSearch === search) {
+                    info.push(data[i])
+                }
             }
+            setItensList(info)
+            setSearch('')
         }
-        setItensList(info)
-        setSearch('')
     }
 
     function listItens({item: item}) {

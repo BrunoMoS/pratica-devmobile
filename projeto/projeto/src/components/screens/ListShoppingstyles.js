@@ -41,30 +41,30 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginBottom: 5,
         borderRadius: 3,
-        padding: 5,
+        padding: 10,
         flexDirection: 'row',
         backgroundColor: '#f9fafb'
     },
     listInsideBox1: {
         color: '#09E01B',
         fontSize: 14,
-        marginLeft: 2
+        marginLeft: 3
     },
     listInsideBox2: {
         color: '#3A4E48',
         fontSize: 14,
-        marginLeft: 2
+        marginLeft: 3
     },
     listInsideBox2A: {
         color: '#3A4E48',
         fontSize: 14,
-        marginLeft: 2,
+        marginLeft: 3,
         textDecorationLine: 'line-through'
     },
     listInsideBox3: {
         color: '#09E01B',
         fontSize: 14,
-        marginLeft: 2
+        marginLeft: 3
     },
     listInsideBox4: {
         position: 'absolute',

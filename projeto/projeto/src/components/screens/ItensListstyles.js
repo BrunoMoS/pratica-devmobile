@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginBottom: 5,
         borderRadius: 3,
-        padding: 5,
+        padding: 10,
         flexDirection: 'row',
         backgroundColor: '#f9fafb'
     },
@@ -76,22 +76,25 @@ const styles = StyleSheet.create({
     insideBox1: {
         fontSize: 14,
         color: '#09E01B',
-        marginLeft: 2
+        marginLeft: 3
     },  
     insideBox2: {
         fontSize: 14,
         color: '#3A4E48',
-        marginLeft: 2
+        marginLeft: 3
     },
     insideBox3: {
+        paddingTop: 5,
         position: 'absolute',
         right: 75
     },
     insideBox4: {
+        paddingTop: 5,
         position: 'absolute',
         right: 40
     },
     insideBox5: {
+        paddingTop: 5,
         position: 'absolute',
         right: 5
     }
