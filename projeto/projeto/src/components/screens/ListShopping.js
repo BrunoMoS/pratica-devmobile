@@ -85,25 +85,27 @@ export default function ListShopping({navigation}) {
     function listItens({item: item}) {
         return (
             <View style={styles.listInsideBox}>
-                <Text style={styles.listInsideBox1}>{item.quantity?item.quantity.slice(0,2):''}</Text>
-                <Text style={item.completed?styles.listInsideBox2A:styles.listInsideBox2}>{item.title?item.title.slice(0,16):''}</Text>
-                <Text style={styles.listInsideBox1}>{item.price?item.price.slice(0,5):''}</Text>
-                <Text style={styles.listInsideBox2}>{item.place?item.place.slice(0,11):''}</Text>
-                <Text style={styles.listInsideBox3}>{item.cost > 0?item.cost.slice(0,6):''}</Text>
-                <Icon
-                    style={styles.listInsideBox4}
-                    name="cart-minus"
-                    size={25}
-                    color='#EB0927'
-                    onPress={()=> removeItemList(item.id)}
-                />
-                <Icon
-                    style={styles.listInsideBox5}
-                    name="checkbox-marked"
-                    size={25}
-                    color='#09E01B'
-                    onPress={()=> checkList(item.id)}
-                />
+                <Text style={item.completed ? styles.listInsideBox1A : styles.listInsideBox1}>Item: {item.title}</Text>
+                <Text style={styles.listInsideBox1}>Quantidade: {item.quantity}</Text>
+                <Text style={styles.listInsideBox1}>Preço: {item.price}</Text>
+                <Text style={styles.listInsideBox1}>Local: {item.place}</Text>
+                <Text style={styles.listInsideBox1}>Total: {item.cost > 0 ? item.cost : ''}</Text>
+                <View style={styles.listInsideBoxIcon}>
+                    <Icon
+                        style={styles.listInsideBox2}
+                        name="basket-minus"
+                        size={25}
+                        color='#EB0927'
+                        onPress={()=> removeItemList(item.id)}
+                    />
+                    <Icon
+                        style={styles.listInsideBox2}
+                        name="check-decagram"
+                        size={25}
+                        color='#09E01B'
+                        onPress={()=> checkList(item.id)}
+                    />
+                </View>
             </View>
         )
     }

@@ -102,32 +102,34 @@ export default function ItensList({navigation}) {
     function listItens({item: item}) {
         return (
             <View style={styles.listInsideBox}>
-                <Text style={styles.insideBox1}>{item.quantity?item.quantity.slice(0,2):''}</Text>
-                <Text style={styles.insideBox2}>{item.title?item.title.slice(0,12):''}</Text>
-                <Text style={styles.insideBox1}>{item.price?item.price.slice(0,5):''}</Text>
-                <Text style={styles.insideBox2}>{item.place?item.place.slice(0,9):''}</Text>
-                <Text style={styles.insideBox1}>{item.cost > 0?item.cost.slice(0,6):''}</Text>
-                <Icon
-                    style={styles.insideBox3}  
-                    name='square-edit-outline' 
-                    size={25} 
-                    color='#EB0927' 
-                    onPress={()=> {navigation.navigate('Item', item.id)}}
-                />
-                <Icon 
-                    style={styles.insideBox4} 
-                    name='cart-plus' 
-                    size={25} 
-                    color='#09E01B' 
-                    onPress={()=> {handleFetchNewData(item.id)}}
-                />
-                <Icon
-                    style={styles.insideBox5}  
-                    name='delete-forever' 
-                    size={25} 
-                    color='#EB0927' 
-                    onPress={()=> {removeItem(item.id)}}
-                />
+                <Text style={styles.insideBox1}>Item: {item.title}</Text>
+                <Text style={styles.insideBox1}>Quantidade: {item.quantity}</Text>
+                <Text style={styles.insideBox1}>Preço: {item.price}</Text>
+                <Text style={styles.insideBox1}>Local: {item.place}</Text>
+                <Text style={styles.insideBox1}>Total: {item.cost > 0 ? item.cost : ''}</Text>
+                <View style={styles.listInsideBoxIcon}>
+                    <Icon
+                        style={styles.insideBox2}  
+                        name='square-edit-outline' 
+                        size={25} 
+                        color='#EB0927' 
+                        onPress={()=> {navigation.navigate('ItemEdit', item.id)}}
+                    />
+                    <Icon 
+                        style={styles.insideBox2} 
+                        name='basket-plus' 
+                        size={25} 
+                        color='#09E01B' 
+                        onPress={()=> {handleFetchNewData(item.id)}}
+                    />
+                    <Icon
+                        style={styles.insideBox2}  
+                        name='delete-forever' 
+                        size={25} 
+                        color='#EB0927' 
+                        onPress={()=> {removeItem(item.id)}}
+                    />
+                </View>
             </View>
         )
     }
@@ -139,7 +141,7 @@ export default function ItensList({navigation}) {
                 name='playlist-plus' 
                 size={40} 
                 color='#3A4E48' 
-                onPress={()=> {navigation.navigate('List')}}
+                onPress={()=> {navigation.navigate('ItemList')}}
             />
             <Icon 
                 style={styles.listInsideIcon1}

@@ -13,7 +13,7 @@ export default function Home({navigation}) {
                     name='playlist-plus' 
                     size={40} 
                     color='#3A4E48' 
-                    onPress={()=> {navigation.navigate('List')}}
+                    onPress={()=> {navigation.navigate('ItemList')}}
                 />
                 <Icon
                     style={styles.homeShopp2}

@@ -33,48 +33,36 @@ const styles = StyleSheet.create({
     },
     listInside2Text: {
         marginLeft: 5,
-        color: '#3A4E48',
+        color: '#f9fafb',
         fontSize: 18,
         fontWeight: 'bold'
     },
     listInsideBox: {
         marginHorizontal: 20,
-        marginBottom: 5,
-        borderRadius: 3,
-        padding: 10,
+        marginBottom: 10
+    },
+    listInsideBoxIcon: {
+        marginTop: 3,
+        padding: 3,
         flexDirection: 'row',
-        backgroundColor: '#f9fafb'
+        justifyContent: 'flex-end',
+        backgroundColor: '#f9fafb',
+        borderBottomStartRadius: 5,
+        borderBottomEndRadius: 5
     },
     listInsideBox1: {
-        color: '#09E01B',
-        fontSize: 14,
-        marginLeft: 3
-    },
-    listInsideBox2: {
         color: '#3A4E48',
-        fontSize: 14,
-        marginLeft: 3
+        fontSize: 16,
+        fontWeight: 'bold'
     },
-    listInsideBox2A: {
+    listInsideBox1A: {
         color: '#3A4E48',
-        fontSize: 14,
-        marginLeft: 3,
+        fontSize: 16,
+        fontWeight: 'bold',
         textDecorationLine: 'line-through'
     },
-    listInsideBox3: {
-        color: '#09E01B',
-        fontSize: 14,
-        marginLeft: 3
-    },
-    listInsideBox4: {
-        paddingTop: 5,
-        position: 'absolute',
-        right: 40
-    },
-    listInsideBox5: {
-        paddingTop: 5,
-        position: 'absolute',
-        right: 5
+    listInsideBox2: {
+        marginStart: 15
     }
 })
 

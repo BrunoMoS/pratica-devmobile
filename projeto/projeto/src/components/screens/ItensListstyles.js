@@ -19,11 +19,16 @@ const styles = StyleSheet.create({
     },
     listInsideBox: {
         marginHorizontal: 20,
-        marginBottom: 5,
-        borderRadius: 3,
-        padding: 10,
+        marginBottom: 10
+    },
+    listInsideBoxIcon: {
+        marginTop: 3,
+        padding: 3,
         flexDirection: 'row',
-        backgroundColor: '#f9fafb'
+        justifyContent: 'flex-end',
+        backgroundColor: '#f9fafb',
+        borderBottomStartRadius: 5,
+        borderBottomEndRadius: 5
     },
     listInsideTitle: {
         marginTop: 60,
@@ -35,6 +40,10 @@ const styles = StyleSheet.create({
     },
     listInside1: {
         alignItems: 'center'
+    },
+    listInside2: {
+        marginHorizontal: 20,
+        marginBottom: 5
     },
     listSearch: {
         flexDirection: 'row',
@@ -63,40 +72,19 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 3,
         borderBottomRightRadius: 3
     },
-    listInside2: {
-        marginHorizontal: 20,
-        marginBottom: 5
-    },
     listInside2Text: {
         marginLeft: 5,
-        color: '#3A4E48',
+        color: '#f9fafb',
         fontSize: 18,
         fontWeight: 'bold'
     },
     insideBox1: {
-        fontSize: 14,
-        color: '#09E01B',
-        marginLeft: 3
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#3A4E48'
     },  
     insideBox2: {
-        fontSize: 14,
-        color: '#3A4E48',
-        marginLeft: 3
-    },
-    insideBox3: {
-        paddingTop: 5,
-        position: 'absolute',
-        right: 75
-    },
-    insideBox4: {
-        paddingTop: 5,
-        position: 'absolute',
-        right: 40
-    },
-    insideBox5: {
-        paddingTop: 5,
-        position: 'absolute',
-        right: 5
+         marginStart: 15
     }
 })
 
