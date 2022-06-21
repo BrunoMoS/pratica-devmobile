@@ -15,10 +15,12 @@ export default function ItemList({navigation}) {
     
     async function createItem(shopp) {
         let priceShopp
-        if(shopp.price !== undefined) {
-            let price
+        let price
+        let quantity
+        if(shopp.price !== undefined && shopp.quantity !== undefined) {
+            quantity = shopp.quantity.replace(',','.')
             price = shopp.price.replace(',','.')  
-            priceShopp = price*shopp.quantity 
+            priceShopp = price*quantity 
         } else {
             priceShopp = shopp.price*shopp.quantity
         }

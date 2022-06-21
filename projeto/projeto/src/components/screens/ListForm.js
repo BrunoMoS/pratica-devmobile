@@ -21,16 +21,21 @@ export default function ListForm({handleOnChange, shoppData}) {
     }, [shoppData])
 
     function handleChange() {
+        let item
         if(shopp === undefined) {
-            const item = {
+                item = {
                 title: title,
                 quantity: quantity,
                 price: price,
                 place: place,
             }
             handleOnChange(item)
+            setTitle('')
+            setQuantity('')
+            setPrice('')
+            setPlace('')
         } else {
-            const item = {
+                item = {
                 title: title?title:shopp.title,
                 quantity: quantity?quantity:shopp.quantity,
                 price: price?price:shopp.price,
