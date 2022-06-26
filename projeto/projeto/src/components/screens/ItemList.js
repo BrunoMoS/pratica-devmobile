@@ -17,7 +17,7 @@ export default function ItemList({navigation}) {
         let priceShopp
         let price
         let quantity
-        if(shopp.price !== undefined && shopp.quantity !== undefined) {
+        if(shopp.price && shopp.quantity) {
             quantity = shopp.quantity.replace(',','.')
             price = shopp.price.replace(',','.')  
             priceShopp = price*quantity 

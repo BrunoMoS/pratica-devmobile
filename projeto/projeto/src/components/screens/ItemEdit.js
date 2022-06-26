@@ -42,7 +42,7 @@ export default function ItemEdit(props) {
         let priceShopp
         let price
         let quantity
-        if(shopp.price !== undefined && shopp.quantity !== undefined) {
+        if(shopp.price && shopp.quantity) {
             quantity = shopp.quantity.replace(',','.')
             price = shopp.price.replace(',','.')  
             priceShopp = price*quantity 
@@ -79,7 +79,7 @@ export default function ItemEdit(props) {
     if(infoData) {
         handleFetchDataList(infoData)
     }
-
+    
     async function editPostList(shopp) {
         const response = await List.getItem('@listsaves:itens')
         const previousData = response? JSON.parse(response): []

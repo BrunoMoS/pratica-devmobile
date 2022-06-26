@@ -45,7 +45,7 @@ export default function ItensList({navigation}) {
         }
         setInfoData(id)
     }
-
+    
     async function handleFetchNewDataList(id) {
         const response = await List.getItem('@listsaves:itens')
         const previousData = response?JSON.parse(response):[]
@@ -83,6 +83,9 @@ export default function ItensList({navigation}) {
 
     async function handleSearchItem() {
         let info = []
+        let newSearch 
+        let newTitleSearch
+        let newPlaceSearch
         const response = await getItem()
         const data = response? JSON.parse(response): []
         if(search === '') {
@@ -90,7 +93,14 @@ export default function ItensList({navigation}) {
         } else {
             for(let i=0; i<data.length; i++) {
                 let{title: titleSearch, place: placeSearch} = data[i]
-                if(titleSearch === search || placeSearch === search) {
+                newSearch = search.replace(/( )+/g, '')
+                if(titleSearch) {
+                    newTitleSearch = titleSearch.replace(/( )+/g, '')
+                }
+                if(placeSearch) {
+                    newPlaceSearch = placeSearch.replace(/( )+/g, '')
+                }
+                if(newTitleSearch === newSearch || newPlaceSearch === newSearch) {
                     info.push(data[i])
                 }
             }
