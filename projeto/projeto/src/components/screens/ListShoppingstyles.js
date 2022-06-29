@@ -5,43 +5,54 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#9fb409'
     },
-    listInsideIcon: {
+    listIcon1: {
         marginTop: 5,
         paddingLeft: 20,
         position: 'absolute',
         left: 0
     },
-    listInsideIcon1: {
+    listIcon2: {
         marginTop: 5,
         paddingRight: 20,
         position: 'absolute',
         right: 0
     },
-    listInsideTitle: {
+    listText1: {
         marginTop: 60,
         fontSize: 20,
         color: '#3A4E48',
         fontWeight: 'bold',
         alignSelf: 'center'
     },
-    listInside1: {
+    listView1: {
         alignItems: 'center'
     },
-    listInside2: {
+    listView2: {
         marginHorizontal: 20,
         marginBottom: 5
     },
-    listInside2Text: {
+    listText2: {
         marginLeft: 5,
         color: '#f9fafb',
         fontSize: 18,
         fontWeight: 'bold'
     },
-    listInsideBox: {
+    listInside: {
         marginHorizontal: 20,
         marginBottom: 10
     },
-    listInsideBoxIcon: {
+    listInsideText1: {
+        color: '#3A4E48',
+        fontSize: 16,
+        fontWeight: 'bold'
+    },
+    listInsideText2: {
+        color: '#3A4E48',
+        fontSize: 16,
+        fontWeight: 'bold',
+        textDecorationLine: 'line-through'
+    },
+    listViewInside: {
         marginTop: 3,
         padding: 3,
         flexDirection: 'row',
@@ -50,18 +61,7 @@ const styles = StyleSheet.create({
         borderBottomStartRadius: 5,
         borderBottomEndRadius: 5
     },
-    listInsideBox1: {
-        color: '#3A4E48',
-        fontSize: 16,
-        fontWeight: 'bold'
-    },
-    listInsideBox1A: {
-        color: '#3A4E48',
-        fontSize: 16,
-        fontWeight: 'bold',
-        textDecorationLine: 'line-through'
-    },
-    listInsideBox2: {
+    listIconInside: {
         marginStart: 15
     }
 })

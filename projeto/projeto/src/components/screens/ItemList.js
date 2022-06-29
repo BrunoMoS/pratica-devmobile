@@ -13,30 +13,30 @@ import styles from './ItemListstyles'
  
 export default function ItemList({navigation}) { 
     
-    async function createItem(shopp) {
-        let priceShopp
+    async function createItem(newItem) {
+        let priceItem
         let price
         let quantity
-        if(shopp.price && shopp.quantity) {
-            quantity = shopp.quantity.replace(',','.')
-            price = shopp.price.replace(',','.')  
-            priceShopp = price*quantity 
+        if(newItem.price && newItem.quantity) {
+            quantity = newItem.quantity.replace(',','.')
+            price = newItem.price.replace(',','.')  
+            priceItem = price*quantity 
         } else {
-            priceShopp = shopp.price*shopp.quantity
+            priceItem = newItem.price*newItem.quantity
         }
-        shopp.cost = priceShopp.toFixed(2)     
-        shopp.id = uuid.v4()
+        newItem.cost = priceItem.toFixed(2)     
+        newItem.id = uuid.v4()
         
         const response = await AsyncStorage.getItem('@itenssaves:itens')
         const previousData = response?JSON.parse(response):[]
-        const data = [...previousData, shopp]
+        const data = [...previousData, newItem]
         await AsyncStorage.setItem('@itenssaves:itens', JSON.stringify(data))
     }
     
     return (
-        <View style={styles.listBuy}>
+        <View style={styles.list}>
             <Icon 
-                style={styles.listBuyIcon}
+                style={styles.listIcon}
                 name='playlist-star' 
                 size={40} 
                 color='#3A4E48' 

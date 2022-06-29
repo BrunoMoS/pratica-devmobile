@@ -13,24 +13,24 @@ import styles from './ItemEditstyles'
 
 export default function ItemEdit(props) {
     const {getItem, setItem} = useAsyncStorage('@itenssaves:itens')
-    const [infoData, setInfoData] = useState('')
-    const [infoDataList, setInfoDataList] = useState('')
-    const [shopp, setShopp] = useState([])
+    const [infoDataNewItem, setInfoDataNewItem] = useState('')
+    const [infoAddNewItem, setInfoAddNewItem] = useState('')
+    const [oldItem, setOldItem] = useState([])
     
     async function handleFetchData() {
         const response = await getItem()
         const data = response? JSON.parse(response): []
-        const info = []
+        const newData = []
         for(let i=0; i<data.length; i++) {
-            let {id: id} = data[i]
-            if(id === props.route.params) {
-                setShopp(data[i])
+            let {id: idItem} = data[i]
+            if(idItem === props.route.params) {
+                setOldItem(data[i])
             } else {
-                info.push(data[i]) 
+                newData.push(data[i]) 
             }
         }
-        if(info.length >= 0) {
-            await setItem(JSON.stringify(info))
+        if(newData.length >= 0) {
+            await setItem(JSON.stringify(newData))
         } 
     }
       
@@ -38,62 +38,62 @@ export default function ItemEdit(props) {
         handleFetchData()
     }, [])
     
-    async function editPost(shopp) {
-        let priceShopp
+    async function editPost(newItem) {
+        let totalPriceItem
         let price
         let quantity
-        if(shopp.price && shopp.quantity) {
-            quantity = shopp.quantity.replace(',','.')
-            price = shopp.price.replace(',','.')  
-            priceShopp = price*quantity 
+        if(newItem.price && newItem.quantity) {
+            quantity = newItem.quantity.replace(',','.')
+            price = newItem.price.replace(',','.')  
+            totalPriceItem = price*quantity 
         } else {
-            priceShopp = shopp.price*shopp.quantity
+            totalPriceItem = newItem.price*newItem.quantity
         }
-        shopp.cost = priceShopp.toFixed(2) 
-        shopp.id = uuid.v4()
+        newItem.cost = totalPriceItem.toFixed(2) 
+        newItem.id = uuid.v4()
 
         const response = await getItem()
         const previousData = response? JSON.parse(response): []
-        const data = [...previousData, shopp]
+        const data = [...previousData, newItem]
         await setItem(JSON.stringify(data))  
-        setInfoData(shopp)
+        setInfoDataNewItem(newItem)
     }
 
-    async function handleFetchDataList(shopp) {
+    async function handleFetchDataList(newItem) {
         const response = await List.getItem('@listsaves:itens')
         const data = response? JSON.parse(response): []
-        const info = []
+        const newData = []
         if(data.length > 0) {
             for(let i=0; i<data.length; i++) {
-                let {id: id} = data[i]
-                if(id === props.route.params) {
-                    setInfoDataList(shopp)
+                let {id: idItem} = data[i]
+                if(idItem === props.route.params) {
+                    setInfoAddNewItem(newItem)
                 } else {
-                    info.push(data[i]) 
+                    newData.push(data[i]) 
                 }
             }
-            await List.setItem('@listsaves:itens', JSON.stringify(info)) 
+            await List.setItem('@listsaves:itens', JSON.stringify(newData)) 
         }
     }
 
-    if(infoData) {
-        handleFetchDataList(infoData)
+    if(infoDataNewItem) {
+        handleFetchDataList(infoDataNewItem)
     }
     
-    async function editPostList(shopp) {
+    async function editPostList(newItem) {
         const response = await List.getItem('@listsaves:itens')
         const previousData = response? JSON.parse(response): []
-        const data = [...previousData, shopp]
+        const data = [...previousData, newItem]
         await List.setItem('@listsaves:itens', JSON.stringify(data))  
     }
     
-    if(infoDataList) {
-        editPostList(infoDataList)
+    if(infoAddNewItem) {
+        editPostList(infoAddNewItem)
     }
 
     return (
         <View style={styles.item}>
-            <ListForm handleOnChange={editPost} shoppData={shopp}/>
+            <ListForm handleOnChange={editPost} itemData={oldItem}/>
         </View>
     )
 }

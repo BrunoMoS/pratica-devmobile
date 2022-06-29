@@ -13,7 +13,7 @@ import List from '@react-native-async-storage/async-storage'
 
 export default function ItensList({navigation}) {
     const {getItem, setItem} = useAsyncStorage('@itenssaves:itens')
-    const [infoData, setInfoData] = useState('')
+    const [infoDataItem, setInfoDataItem] = useState('')
     const [search, setSearch] = useState('')
     const [itensList, setItensList] = useState([])
     const [itemList, setItemList] = useState([])
@@ -28,37 +28,37 @@ export default function ItensList({navigation}) {
        handleFetchData()
     }, []))
 
-    let total = 0
+    let totalItens = 0
     for(let i=0; i<itensList.length; i++) {
         let {cost: costTotal} = itensList[i]
-        total += Number(costTotal) 
+        totalItens += Number(costTotal) 
     }
     
     async function handleFetchNewData(id) {
         const response = await getItem()
         const data = response? JSON.parse(response): []
         for(let i=0; i<data.length; i++) {
-            let {id: idData} = data[i]
-            if(idData === id) {
+            let {id: idItem} = data[i]
+            if(idItem === id) {
                 setItemList(data[i])
             }
         }
-        setInfoData(id)
+        setInfoDataItem(id)
     }
     
     async function handleFetchNewDataList(id) {
         const response = await List.getItem('@listsaves:itens')
         const previousData = response?JSON.parse(response):[]
-        let info = false
+        let infoCheck = false
         if(previousData.length > 0) {
             for(let i=0; i<previousData.length; i++) {
-                let {id: idData} = previousData[i]
-                if(idData === id) {
+                let {id: idItem} = previousData[i]
+                if(idItem === id) {
                     Alert.alert('Por favor!', 'Item já existe no carrinho, remova o item no carrinho antes de adicionar.')
-                    info = true
+                    infoCheck = true
                 } 
             }
-            if(info !== true) {
+            if(infoCheck !== true) {
                 const data = [...previousData, itemList]
                 await List.setItem('@listsaves:itens', JSON.stringify(data))
             }
@@ -66,11 +66,11 @@ export default function ItensList({navigation}) {
             const data = [...previousData, itemList]
             await List.setItem('@listsaves:itens', JSON.stringify(data))
         }
-        setInfoData('')
+        setInfoDataItem('')
     }
 
-    if(infoData) {
-        handleFetchNewDataList(infoData)
+    if(infoDataItem) {
+        handleFetchNewDataList(infoDataItem)
     }
 
     async function removeItem(id) {
@@ -82,58 +82,58 @@ export default function ItensList({navigation}) {
     }
 
     async function handleSearchItem() {
-        let info = []
+        let newData = []
         let newSearch 
-        let newTitleSearch
-        let newPlaceSearch
+        let newTitleItem
+        let newPlaceItem
         const response = await getItem()
         const data = response? JSON.parse(response): []
         if(search === '') {
             Alert.alert('Atenção!', 'Informe o item ou o local!')
         } else {
             for(let i=0; i<data.length; i++) {
-                let{title: titleSearch, place: placeSearch} = data[i]
+                let{title: titleItem, place: placeItem} = data[i]
                 newSearch = search.replace(/( )+/g, '')
-                if(titleSearch) {
-                    newTitleSearch = titleSearch.replace(/( )+/g, '')
+                if(titleItem) {
+                    newTitleItem = titleItem.replace(/( )+/g, '')
                 }
-                if(placeSearch) {
-                    newPlaceSearch = placeSearch.replace(/( )+/g, '')
+                if(placeItem) {
+                    newPlaceItem = placeItem.replace(/( )+/g, '')
                 }
-                if(newTitleSearch === newSearch || newPlaceSearch === newSearch) {
-                    info.push(data[i])
+                if(newTitleItem === newSearch || newPlaceItem === newSearch) {
+                    newData.push(data[i])
                 }
             }
-            setItensList(info)
+            setItensList(newData)
             setSearch('')
         }
     }
 
     function listItens({item: item}) {
         return (
-            <View style={styles.listInsideBox}>
-                <Text style={styles.insideBox1}>Item: {item.title}</Text>
-                <Text style={styles.insideBox1}>Quantidade: {item.quantity}</Text>
-                <Text style={styles.insideBox1}>Preço: {item.price}</Text>
-                <Text style={styles.insideBox1}>Local: {item.place}</Text>
-                <Text style={styles.insideBox1}>Total: {item.cost > 0 ? item.cost : ''}</Text>
-                <View style={styles.listInsideBoxIcon}>
+            <View style={styles.listViewInside1}>
+                <Text style={styles.listTextInside}>Item: {item.title}</Text>
+                <Text style={styles.listTextInside}>Quantidade: {item.quantity}</Text>
+                <Text style={styles.listTextInside}>Preço: {item.price}</Text>
+                <Text style={styles.listTextInside}>Local: {item.place}</Text>
+                <Text style={styles.listTextInside}>Total: {item.cost > 0 ? item.cost : ''}</Text>
+                <View style={styles.listViewInside2}>
                     <Icon
-                        style={styles.insideBox2}  
+                        style={styles.listIconInside}  
                         name='square-edit-outline' 
                         size={25} 
                         color='#EB0927' 
                         onPress={()=> {navigation.navigate('ItemEdit', item.id)}}
                     />
                     <Icon 
-                        style={styles.insideBox2} 
+                        style={styles.listIconInside} 
                         name='basket-plus' 
                         size={25} 
                         color='#09E01B' 
                         onPress={()=> {handleFetchNewData(item.id)}}
                     />
                     <Icon
-                        style={styles.insideBox2}  
+                        style={styles.listIconInside}  
                         name='delete-forever' 
                         size={25} 
                         color='#EB0927' 
@@ -147,20 +147,20 @@ export default function ItensList({navigation}) {
     return (
         <View style={styles.list}>
             <Icon 
-                style={styles.listInsideIcon}
+                style={styles.listIcon1}
                 name='playlist-plus' 
                 size={40} 
                 color='#3A4E48' 
                 onPress={()=> {navigation.navigate('ItemList')}}
             />
             <Icon 
-                style={styles.listInsideIcon1}
+                style={styles.listIcon2}
                 name='playlist-check' 
                 size={40} 
                 color='#3A4E48' 
                 onPress={()=> {navigation.navigate('ListShopping')}}
             />
-            <Text style={styles.listInsideTitle}>{itensList.length > 0 && <Text>Minha lista</Text>}</Text>
+            <Text style={styles.listText1}>{itensList.length > 0 && <Text>Minha lista</Text>}</Text>
             <View style={styles.listSearch}>
                 <TextInput
                     value={search}
@@ -177,11 +177,11 @@ export default function ItensList({navigation}) {
                     />
                 </TouchableOpacity>
             </View>
-            <View style={styles.listInside1}>
+            <View style={styles.listView1}>
                 <Text>{itensList.length === 0 && <Text>Lista vazia</Text>}</Text>
             </View>
-            <View style={styles.listInside2}>
-                <Text>{itensList.length > 0 && total > 0 && <Text style={styles.listInside2Text}>R$ {total.toFixed(2)}</Text>}</Text>
+            <View style={styles.listView2}>
+                <Text>{itensList.length > 0 && totalItens > 0 && <Text style={styles.listText2}>R$ {totalItens.toFixed(2)}</Text>}</Text>
             </View>
             <FlatList  
                 data={itensList}

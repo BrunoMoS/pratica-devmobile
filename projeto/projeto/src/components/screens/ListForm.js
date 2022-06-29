@@ -8,50 +8,50 @@ import Icon from 'react-native-vector-icons/AntDesign'
 
 import Message from '../layout/Message'
 
-export default function ListForm({handleOnChange, shoppData}) {
+export default function ListForm({handleOnChange, itemData}) {
     const [itemMessage, setItemMessage] = useState('')
     const [title, setTitle] = useState('')
     const [quantity, setQuantity] = useState('')
     const [price, setPrice] = useState('')
     const [place, setPlace] = useState('')
-    const [shopp, setShopp] = useState(shoppData || {})
+    const [item, setItem] = useState(itemData || {})
     
     useEffect(() => {
-        setShopp(shoppData)
-    }, [shoppData])
+        setItem(itemData)
+    }, [itemData])
 
     function handleChange() {
-        let item
-        if(shopp === undefined) {
-                item = {
+        let newItem
+        if(!item) {
+                newItem = {
                 title: title,
                 quantity: quantity,
                 price: price,
                 place: place,
             }
-            handleOnChange(item)
+            handleOnChange(newItem)
             setTitle('')
             setQuantity('')
             setPrice('')
             setPlace('')
         } else {
-                item = {
-                title: title?title:shopp.title,
-                quantity: quantity?quantity:shopp.quantity,
-                price: price?price:shopp.price,
-                place: place?place:shopp.place,
+                newItem = {
+                title: title?title:item.title,
+                quantity: quantity?quantity:item.quantity,
+                price: price?price:item.price,
+                place: place?place:item.place,
             }
-            handleOnChange(item)
+            handleOnChange(newItem)
         }
         setItemMessage('vai dar certo quando der certo!')
     }
     
     return (
-        <View style={styles.container}>
+        <View style={styles.form}>
             <TextInput
                 style={styles.input}
                 onChangeText={setTitle}
-                defaultValue={shopp===undefined?title:shopp.title}
+                defaultValue={!item?title:item.title}
                 placeholder='Informe o item'
                 placeholderTextColor={'#9fb409'}
             />
@@ -59,7 +59,7 @@ export default function ListForm({handleOnChange, shoppData}) {
                 style={styles.input}
                 keyboardType={'numeric'}
                 onChangeText={setQuantity}
-                defaultValue={shopp===undefined?quantity:shopp.quantity}
+                defaultValue={!item?quantity:item.quantity}
                 placeholder='Informe a quantidade'
                 placeholderTextColor={'#9fb409'}
             />
@@ -67,21 +67,21 @@ export default function ListForm({handleOnChange, shoppData}) {
                 style={styles.input}
                 keyboardType={'numeric'}
                 onChangeText={setPrice}
-                defaultValue={shopp===undefined?price:shopp.price}
+                defaultValue={!item?price:item.price}
                 placeholder='Informe o preço'
                 placeholderTextColor={'#9fb409'}
             />
             <TextInput
                 style={styles.input}
                 onChangeText={setPlace}
-                defaultValue={shopp===undefined?place:shopp.place}
+                defaultValue={!item?place:item.place}
                 placeholder='Informe o local'
                 placeholderTextColor={'#9fb409'}
             />
             <TouchableOpacity style={styles.btn} onPress={handleChange}>
                 <Text style={styles.btnText}>Salvar</Text>
             </TouchableOpacity>
-            <Text style={styles.listBuy}>
+            <Text style={styles.text}>
                 {itemMessage && <Message msg={<Icon name='checkcircle' size={40} color='#3A4E48'/>}/>}
             </Text>
         </View>

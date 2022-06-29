@@ -6,34 +6,34 @@ const styles = StyleSheet.create({
         position: 'relative',
         backgroundColor: '#9fb409'
     },
-    homeShopp1: {
+    homeIcon1: {
         marginTop: 5,
         paddingLeft: 20,
         position: 'absolute',
         left: 0
     },
-    homeShopp2: {
+    homeIcon2: {
         marginTop: 5,
         alignSelf: 'center'
     },
-    homeShopp3: {
+    homeIcon3: {
         marginTop: 5,
         paddingRight: 20,
         position: 'absolute',
         right: 0
     },
-    homeShopp4: {
+    homeView: {
         marginTop: 150, 
         alignItems: 'center',
         justifyContent: 'center',
         padding: 5
     }, 
-    homeShoop5: {
+    homeText1: {
         fontSize: 25,
         fontWeight: "bold",
         color: '#3A4E48'
     },  
-    homeShoop6: {
+    homeText2: {
         fontSize: 15,
         color: '#f9fafb'
     }

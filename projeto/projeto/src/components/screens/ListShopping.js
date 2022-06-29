@@ -23,14 +23,14 @@ export default function ListShopping({navigation}) {
         handleFetchData()
     }, []))
 
-    let total = 0
+    let totalList = 0
     for(let i=0; i<list.length; i++) {
         let {cost: costTotal} = list[i]
-        total += Number(costTotal) 
+        totalList += Number(costTotal) 
     }
 
     function removeList() {
-       if(list.length>0) {
+       if(list.length > 0) {
         Alert.alert('Atenção!', 'Deseja excluir todos os itens do seu carrinho?', [
             {
                 text: 'Sim',
@@ -55,22 +55,22 @@ export default function ListShopping({navigation}) {
     }
 
     function checkList(id) {
-        let info = []
+        let newData = []
         for(let i=0; i<list.length; i++) {
-            let{id: idData} = list[i]
-            if(idData !== id) {
-                info.push(list[i])
+            let{id: idItem} = list[i]
+            if(idItem !== id) {
+                newData.push(list[i])
             }
         }
         for(let i=0; i<list.length; i++) {
-            let{id: idData} = list[i]
-            if(idData === id) {
-                const listChecked = {...list[i], completed: true}
-                list[i] = listChecked
-                info.push(list[i])
+            let{id: idItem} = list[i]
+            if(idItem === id) {
+                const itemChecked = {...list[i], completed: true}
+                list[i] = itemChecked
+                newData.push(list[i])
             }
         }
-        setList(info)
+        setList(newData)
         setInfoCheck(true)
     }
 
@@ -84,22 +84,22 @@ export default function ListShopping({navigation}) {
 
     function listItens({item: item}) {
         return (
-            <View style={styles.listInsideBox}>
-                <Text style={item.completed ? styles.listInsideBox1A : styles.listInsideBox1}>Item: {item.title}</Text>
-                <Text style={styles.listInsideBox1}>Quantidade: {item.quantity}</Text>
-                <Text style={styles.listInsideBox1}>Preço: {item.price}</Text>
-                <Text style={styles.listInsideBox1}>Local: {item.place}</Text>
-                <Text style={styles.listInsideBox1}>Total: {item.cost > 0 ? item.cost : ''}</Text>
-                <View style={styles.listInsideBoxIcon}>
+            <View style={styles.listInside}>
+                <Text style={item.completed ? styles.listInsideText2 : styles.listInsideText1}>Item: {item.title}</Text>
+                <Text style={styles.listInsideText1}>Quantidade: {item.quantity}</Text>
+                <Text style={styles.listInsideText1}>Preço: {item.price}</Text>
+                <Text style={styles.listInsideText1}>Local: {item.place}</Text>
+                <Text style={styles.listInsideText1}>Total: {item.cost > 0 ? item.cost : ''}</Text>
+                <View style={styles.listViewInside}>
                     <Icon
-                        style={styles.listInsideBox2}
+                        style={styles.listIconInside}
                         name="basket-minus"
                         size={25}
                         color='#EB0927'
                         onPress={()=> removeItemList(item.id)}
                     />
                     <Icon
-                        style={styles.listInsideBox2}
+                        style={styles.listIconInside}
                         name="check-decagram"
                         size={25}
                         color='#09E01B'
@@ -113,25 +113,27 @@ export default function ListShopping({navigation}) {
     return (
         <View style={styles.list}>
             <Icon 
-                style={styles.listInsideIcon}
+                style={styles.listIcon1}
                 name="playlist-remove"
                 size={40}
                 color='#3A4E48'
                 onPress={removeList}
             />
             <Icon
-                style={styles.listInsideIcon1}
+                style={styles.listIcon2}
                 name='playlist-star'
                 size={40}
                 color='#3A4E48'
                 onPress={()=> {navigation.navigate('ItensList')}}
             />
-            <Text style={styles.listInsideTitle}>{list.length > 0 && <Text>Meu carrinho</Text>}</Text>
-            <View style={styles.listInside1}>
+            <Text style={styles.listText1}>{list.length > 0 && <Text>Meu carrinho</Text>}</Text>
+            <View style={styles.listView1}>
                 <Text>{list.length === 0 && (<Text>Carrinho vazio</Text>)}</Text>
             </View>
-            <View style={styles.listInside2}>
-                <Text>{list.length > 0 && total > 0 && <Text style={styles.listInside2Text}>R$ {total.toFixed(2)}</Text>}</Text>
+            <View style={styles.listView2}>
+                <Text>
+                    {list.length > 0 && totalList > 0 && <Text style={styles.listText2}>R$ {totalList.toFixed(2)}</Text>}
+                </Text>
             </View>
             <FlatList  
                 data={list}

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-    container: {
+    form: {
        marginTop: 60,
        paddingHorizontal: 20
     },
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20
     },
-    listBuy: {
+    text: {
         width: '100%',
         paddingTop: 20,
         marginLeft: '45%'
