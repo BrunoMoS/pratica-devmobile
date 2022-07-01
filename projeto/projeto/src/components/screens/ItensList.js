@@ -28,10 +28,10 @@ export default function ItensList({navigation}) {
        handleFetchData()
     }, []))
 
-    let totalItens = 0
+    let totalPriceItens = 0
     for(let i=0; i<itensList.length; i++) {
         let {cost: costTotal} = itensList[i]
-        totalItens += Number(costTotal) 
+        totalPriceItens += Number(costTotal) 
     }
     
     async function handleFetchNewData(id) {
@@ -181,7 +181,7 @@ export default function ItensList({navigation}) {
                 <Text>{itensList.length === 0 && <Text>Lista vazia</Text>}</Text>
             </View>
             <View style={styles.listView2}>
-                <Text>{itensList.length > 0 && totalItens > 0 && <Text style={styles.listText2}>R$ {totalItens.toFixed(2)}</Text>}</Text>
+                <Text>{itensList.length > 0 && totalPriceItens > 0 && <Text style={styles.listText2}>R$ {totalPriceItens.toFixed(2)}</Text>}</Text>
             </View>
             <FlatList  
                 data={itensList}

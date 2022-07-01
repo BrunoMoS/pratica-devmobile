@@ -23,10 +23,10 @@ export default function ListShopping({navigation}) {
         handleFetchData()
     }, []))
 
-    let totalList = 0
+    let totalPriceList = 0
     for(let i=0; i<list.length; i++) {
         let {cost: costTotal} = list[i]
-        totalList += Number(costTotal) 
+        totalPriceList += Number(costTotal) 
     }
 
     function removeList() {
@@ -132,7 +132,7 @@ export default function ListShopping({navigation}) {
             </View>
             <View style={styles.listView2}>
                 <Text>
-                    {list.length > 0 && totalList > 0 && <Text style={styles.listText2}>R$ {totalList.toFixed(2)}</Text>}
+                    {list.length > 0 && totalPriceList > 0 && <Text style={styles.listText2}>R$ {totalPriceList.toFixed(2)}</Text>}
                 </Text>
             </View>
             <FlatList  

@@ -14,17 +14,17 @@ import styles from './ItemListstyles'
 export default function ItemList({navigation}) { 
     
     async function createItem(newItem) {
-        let priceItem
+        let totalPriceItem
         let price
         let quantity
         if(newItem.price && newItem.quantity) {
             quantity = newItem.quantity.replace(',','.')
             price = newItem.price.replace(',','.')  
-            priceItem = price*quantity 
+            totalPriceItem = price*quantity 
         } else {
-            priceItem = newItem.price*newItem.quantity
+            totalPriceItem = newItem.price*newItem.quantity
         }
-        newItem.cost = priceItem.toFixed(2)     
+        newItem.cost = totalPriceItem.toFixed(2)     
         newItem.id = uuid.v4()
         
         const response = await AsyncStorage.getItem('@itenssaves:itens')

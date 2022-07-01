@@ -93,7 +93,7 @@ export default function ItemEdit(props) {
 
     return (
         <View style={styles.item}>
-            <ListForm handleOnChange={editPost} itemData={oldItem}/>
+            <ListForm handleOnChange={editPost} oldItemData={oldItem}/>
         </View>
     )
 }

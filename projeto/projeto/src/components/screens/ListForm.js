@@ -8,21 +8,21 @@ import Icon from 'react-native-vector-icons/AntDesign'
 
 import Message from '../layout/Message'
 
-export default function ListForm({handleOnChange, itemData}) {
+export default function ListForm({handleOnChange, oldItemData}) {
     const [itemMessage, setItemMessage] = useState('')
     const [title, setTitle] = useState('')
     const [quantity, setQuantity] = useState('')
     const [price, setPrice] = useState('')
     const [place, setPlace] = useState('')
-    const [item, setItem] = useState(itemData || {})
+    const [oldItem, setOldItem] = useState('')
     
     useEffect(() => {
-        setItem(itemData)
-    }, [itemData])
+        setOldItem(oldItemData)
+    }, [oldItemData])
 
     function handleChange() {
         let newItem
-        if(!item) {
+        if(!oldItem) {
                 newItem = {
                 title: title,
                 quantity: quantity,
@@ -36,10 +36,10 @@ export default function ListForm({handleOnChange, itemData}) {
             setPlace('')
         } else {
                 newItem = {
-                title: title?title:item.title,
-                quantity: quantity?quantity:item.quantity,
-                price: price?price:item.price,
-                place: place?place:item.place,
+                title: title?title:oldItem.title,
+                quantity: quantity?quantity:oldItem.quantity,
+                price: price?price:oldItem.price,
+                place: place?place:oldItem.place,
             }
             handleOnChange(newItem)
         }
@@ -51,7 +51,7 @@ export default function ListForm({handleOnChange, itemData}) {
             <TextInput
                 style={styles.input}
                 onChangeText={setTitle}
-                defaultValue={!item?title:item.title}
+                defaultValue={!oldItem?title:oldItem.title}
                 placeholder='Informe o item'
                 placeholderTextColor={'#9fb409'}
             />
@@ -59,7 +59,7 @@ export default function ListForm({handleOnChange, itemData}) {
                 style={styles.input}
                 keyboardType={'numeric'}
                 onChangeText={setQuantity}
-                defaultValue={!item?quantity:item.quantity}
+                defaultValue={!oldItem?quantity:oldItem.quantity}
                 placeholder='Informe a quantidade'
                 placeholderTextColor={'#9fb409'}
             />
@@ -67,14 +67,14 @@ export default function ListForm({handleOnChange, itemData}) {
                 style={styles.input}
                 keyboardType={'numeric'}
                 onChangeText={setPrice}
-                defaultValue={!item?price:item.price}
+                defaultValue={!oldItem?price:oldItem.price}
                 placeholder='Informe o preço'
                 placeholderTextColor={'#9fb409'}
             />
             <TextInput
                 style={styles.input}
                 onChangeText={setPlace}
-                defaultValue={!item?place:item.place}
+                defaultValue={!oldItem?place:oldItem.place}
                 placeholder='Informe o local'
                 placeholderTextColor={'#9fb409'}
             />
