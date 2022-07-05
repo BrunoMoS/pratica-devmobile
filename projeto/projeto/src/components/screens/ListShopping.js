@@ -84,16 +84,18 @@ export default function ListShopping({navigation}) {
 
     function listItens({item: item}) {
         return (
-            <View style={styles.listInside}>
-                <Text style={item.completed ? styles.listInsideText2 : styles.listInsideText1}>Item: {item.title}</Text>
-                <Text style={styles.listInsideText1}>Quantidade: {item.quantity}</Text>
-                <Text style={styles.listInsideText1}>Preço: {item.price}</Text>
-                <Text style={styles.listInsideText1}>Local: {item.place}</Text>
-                <Text style={styles.listInsideText1}>Total: {item.cost > 0 ? item.cost : ''}</Text>
-                <View style={styles.listViewInside}>
+            <View style={styles.listViewInside1}>
+                <View style={styles.listViewText}>
+                    <Text style={item.completed ? styles.listInsideText2 : styles.listInsideText1}>Item: {item.title}</Text>
+                    <Text style={styles.listInsideText1}>Quantidade: {item.quantity}</Text>
+                    <Text style={styles.listInsideText1}>Preço: {item.price}</Text>
+                    <Text style={styles.listInsideText1}>Local: {item.place}</Text>
+                    <Text style={styles.listInsideText1}>Total: {item.cost > 0 ? item.cost : ''}</Text>
+                </View>
+                <View style={styles.listViewInside2}>
                     <Icon
                         style={styles.listIconInside}
-                        name="basket-minus"
+                        name="cart-minus"
                         size={25}
                         color='#EB0927'
                         onPress={()=> removeItemList(item.id)}

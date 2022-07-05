@@ -67,7 +67,17 @@ const styles = StyleSheet.create({
     },
     listViewInside1: {
         marginHorizontal: 20,
-        marginBottom: 10
+        marginBottom: 10,
+        backgroundColor: '#f9fafb',
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5
+    },
+    listViewText: {
+        marginLeft: 2,
+        paddingLeft: 8,
+        paddingBottom: 4,
+        backgroundColor: '#9fb409',
+        borderBottomLeftRadius: 5
     },
     listTextInside: {
         fontSize: 16,
@@ -75,13 +85,9 @@ const styles = StyleSheet.create({
         color: '#3A4E48'
     },
     listViewInside2: {
-        marginTop: 3,
         padding: 3,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        backgroundColor: '#f9fafb',
-        borderBottomStartRadius: 5,
-        borderBottomEndRadius: 5
+        justifyContent: 'flex-end'    
     },  
     listIconInside: {
          marginStart: 15

@@ -85,6 +85,7 @@ export default function ItemEdit(props) {
         const previousData = response? JSON.parse(response): []
         const data = [...previousData, newItem]
         await List.setItem('@listsaves:itens', JSON.stringify(data))  
+        setInfoAddNewItem('')
     }
     
     if(infoAddNewItem) {
@@ -93,7 +94,7 @@ export default function ItemEdit(props) {
 
     return (
         <View style={styles.item}>
-            <ListForm handleOnChange={editPost} oldItemData={oldItem}/>
+            <ListForm handlesubmit={editPost} oldItemData={oldItem}/>
         </View>
     )
 }

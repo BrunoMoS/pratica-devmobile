@@ -43,7 +43,7 @@ export default function ItemList({navigation}) {
                 onPress={()=> {navigation.navigate('ItensList')}}
             />
             <View>
-                <ListForm handleOnChange={createItem}/>  
+                <ListForm handlesubmit={createItem}/>  
             </View>
         </View>
     )

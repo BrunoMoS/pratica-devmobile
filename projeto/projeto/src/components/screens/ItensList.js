@@ -88,7 +88,7 @@ export default function ItensList({navigation}) {
         let newPlaceItem
         const response = await getItem()
         const data = response? JSON.parse(response): []
-        if(search === '') {
+        if(!search) {
             Alert.alert('Atenção!', 'Informe o item ou o local!')
         } else {
             for(let i=0; i<data.length; i++) {
@@ -112,11 +112,13 @@ export default function ItensList({navigation}) {
     function listItens({item: item}) {
         return (
             <View style={styles.listViewInside1}>
-                <Text style={styles.listTextInside}>Item: {item.title}</Text>
-                <Text style={styles.listTextInside}>Quantidade: {item.quantity}</Text>
-                <Text style={styles.listTextInside}>Preço: {item.price}</Text>
-                <Text style={styles.listTextInside}>Local: {item.place}</Text>
-                <Text style={styles.listTextInside}>Total: {item.cost > 0 ? item.cost : ''}</Text>
+                <View style={styles.listViewText}>
+                    <Text style={styles.listTextInside}>Item: {item.title}</Text>
+                    <Text style={styles.listTextInside}>Quantidade: {item.quantity}</Text>
+                    <Text style={styles.listTextInside}>Preço: {item.price}</Text>
+                    <Text style={styles.listTextInside}>Local: {item.place}</Text>
+                    <Text style={styles.listTextInside}>Total: {item.cost > 0 ? item.cost : ''}</Text>
+                </View>
                 <View style={styles.listViewInside2}>
                     <Icon
                         style={styles.listIconInside}  
@@ -127,7 +129,7 @@ export default function ItensList({navigation}) {
                     />
                     <Icon 
                         style={styles.listIconInside} 
-                        name='basket-plus' 
+                        name='cart-plus' 
                         size={25} 
                         color='#09E01B' 
                         onPress={()=> {handleFetchNewData(item.id)}}

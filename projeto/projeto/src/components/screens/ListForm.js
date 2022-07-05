@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/AntDesign'
 
 import Message from '../layout/Message'
 
-export default function ListForm({handleOnChange, oldItemData}) {
+export default function ListForm({handlesubmit, oldItemData}) {
     const [itemMessage, setItemMessage] = useState('')
     const [title, setTitle] = useState('')
     const [quantity, setQuantity] = useState('')
@@ -19,7 +19,7 @@ export default function ListForm({handleOnChange, oldItemData}) {
     useEffect(() => {
         setOldItem(oldItemData)
     }, [oldItemData])
-
+    
     function handleChange() {
         let newItem
         if(!oldItem) {
@@ -29,7 +29,7 @@ export default function ListForm({handleOnChange, oldItemData}) {
                 price: price,
                 place: place,
             }
-            handleOnChange(newItem)
+            handlesubmit(newItem)
             setTitle('')
             setQuantity('')
             setPrice('')
@@ -41,7 +41,7 @@ export default function ListForm({handleOnChange, oldItemData}) {
                 price: price?price:oldItem.price,
                 place: place?place:oldItem.place,
             }
-            handleOnChange(newItem)
+            handlesubmit(newItem)
         }
         setItemMessage('vai dar certo quando der certo!')
     }

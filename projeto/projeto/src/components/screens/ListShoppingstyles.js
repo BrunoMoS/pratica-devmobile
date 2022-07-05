@@ -37,9 +37,19 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold'
     },
-    listInside: {
+    listViewInside1: {
         marginHorizontal: 20,
-        marginBottom: 10
+        marginBottom: 10,
+        backgroundColor: '#f9fafb',
+        borderBottomRightRadius: 5,
+        borderBottomLeftRadius: 5
+    },
+    listViewText: {
+        marginLeft: 2,
+        paddingLeft: 8,
+        paddingBottom: 4,
+        backgroundColor: '#9fb409',
+        borderBottomLeftRadius: 5
     },
     listInsideText1: {
         color: '#3A4E48',
@@ -52,14 +62,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textDecorationLine: 'line-through'
     },
-    listViewInside: {
-        marginTop: 3,
+    listViewInside2: {
         padding: 3,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        backgroundColor: '#f9fafb',
-        borderBottomStartRadius: 5,
-        borderBottomEndRadius: 5
+        justifyContent: 'flex-end'
     },
     listIconInside: {
         marginStart: 15
