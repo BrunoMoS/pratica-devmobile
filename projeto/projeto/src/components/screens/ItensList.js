@@ -91,17 +91,20 @@ export default function ItensList({navigation}) {
         if(!search) {
             Alert.alert('Atenção!', 'Informe o item ou o local!')
         } else {
+            newSearch = search.replace(/( )+/g, '')
             for(let i=0; i<data.length; i++) {
                 let{title: titleItem, place: placeItem} = data[i]
-                newSearch = search.replace(/( )+/g, '')
                 if(titleItem) {
                     newTitleItem = titleItem.replace(/( )+/g, '')
+                    if(newTitleItem === newSearch) {
+                        newData.push(data[i])
+                    }
                 }
                 if(placeItem) {
                     newPlaceItem = placeItem.replace(/( )+/g, '')
-                }
-                if(newTitleItem === newSearch || newPlaceItem === newSearch) {
-                    newData.push(data[i])
+                    if(newPlaceItem === newSearch) {
+                        newData.push(data[i])
+                    }
                 }
             }
             setItensList(newData)

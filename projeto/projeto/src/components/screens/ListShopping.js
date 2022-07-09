@@ -56,20 +56,16 @@ export default function ListShopping({navigation}) {
 
     function checkList(id) {
         let newData = []
+        let itemChecked
         for(let i=0; i<list.length; i++) {
             let{id: idItem} = list[i]
             if(idItem !== id) {
                 newData.push(list[i])
+            } else {
+                itemChecked = {...list[i], completed: true}
             }
         }
-        for(let i=0; i<list.length; i++) {
-            let{id: idItem} = list[i]
-            if(idItem === id) {
-                const itemChecked = {...list[i], completed: true}
-                list[i] = itemChecked
-                newData.push(list[i])
-            }
-        }
+        newData.push(itemChecked)
         setList(newData)
         setInfoCheck(true)
     }
