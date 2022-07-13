@@ -23,7 +23,7 @@ export default function ListForm({handlesubmit, oldItemData}) {
     function handleChange() {
         let newItem
         if(!oldItem) {
-                newItem = {
+            newItem = {
                 title: title,
                 quantity: quantity,
                 price: price,
@@ -35,7 +35,7 @@ export default function ListForm({handlesubmit, oldItemData}) {
             setPrice('')
             setPlace('')
         } else {
-                newItem = {
+            newItem = {
                 title: title?title:oldItem.title,
                 quantity: quantity?quantity:oldItem.quantity,
                 price: price?price:oldItem.price,
